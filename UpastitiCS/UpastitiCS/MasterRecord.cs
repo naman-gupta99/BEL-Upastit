@@ -210,19 +210,30 @@ namespace UpastitiCS
                     }
                     reader.Close();
 
-                    cmd = new SqlCommand(string.Format("SELECT staffno,staffname,fathersname,gender,contractorsname,plantname,skilllevel,samitiname FROM staff where plantname='{0}' order by staffno;",DefaultPlant), mssql.getConnection());
+                    cbContractorName.Items.Clear();
+                    cmd.CommandText = string.Format("SELECT * FROM contractor order by contractorname;");
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cbContractorName.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+
+                    cmd = new SqlCommand(string.Format("SELECT staffno,staffname,fathername,gender,contractorname,plantname,skilllevel,samitiname FROM staff where plantname='{0}' order by staffno;",DefaultPlant), mssql.getConnection());
                     reader = cmd.ExecuteReader();
                     dgvAttendance.Rows.Clear();
                     while (reader.Read())
                     {
                         dgvAttendance.Rows.Add();
                         dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[0].Value = dgvAttendance.Rows.Count;
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[1].Value = reader.GetInt32(0).ToString();
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[2].Value = reader.GetString(1);
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[3].Value = reader.GetString(2);
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[4].Value = reader.GetString(3);
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[5].Value = reader.GetString(4);
-                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[6].Value = reader.GetString(5);
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[1].Value = reader.GetString(0); //staffno
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[2].Value = reader.GetString(1); //staffname
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[3].Value = reader.GetString(2); //fathername
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[4].Value = reader.GetString(3); //gender
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[5].Value = reader.GetString(4); //contractorname
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[6].Value = reader.GetString(5); //plantname
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[7].Value = reader.GetString(6); //skilllevel
+                        dgvAttendance.Rows[dgvAttendance.Rows.Count - 1].Cells[8].Value = reader.GetString(7); //samitiname
                     }
                     reader.Close();
                 }
@@ -239,6 +250,7 @@ namespace UpastitiCS
             {
                 gbStaffDetails.Enabled = true;
                 tbName.Text = "";
+                tbFatherName.Text = "";
                 tbStaffNumber.Text = "";
                 tbStaffNumber.Focus();
                 cbPlant.Text = DefaultPlant;
@@ -269,7 +281,9 @@ namespace UpastitiCS
                 {
                     //To Re-enable
                     tbName.Enabled = true;
+                    tbFatherName.Enabled = true;
                     tbStaffNumber.Enabled = true;
+                    cbContractorName.Enabled = true;
                     cbGender.Enabled = true;
                     cbPlant.Enabled = true;
                     cbSamiti.Enabled = true;
@@ -292,7 +306,9 @@ namespace UpastitiCS
         private void clearValues()
         {
             tbName.Text = "";
+            tbFatherName.Text = "";
             tbStaffNumber.Text = "";
+            cbContractorName.SelectedIndex = -1;
             cbPlant.SelectedIndex = -1;
             cbSamiti.SelectedIndex = -1;
             cbGender.SelectedIndex = -1;
@@ -483,10 +499,12 @@ namespace UpastitiCS
                     btnCapture.Enabled = false;
                     tbStaffNumber.Text = dgvAttendance.Rows[selectedRow].Cells[1].Value.ToString();
                     tbName.Text = dgvAttendance.Rows[selectedRow].Cells[2].Value.ToString();
-                    cbGender.SelectedIndex = cbGender.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[3].Value.ToString());
-                    cbPlant.SelectedIndex = cbPlant.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[4].Value.ToString());
-                    cbSkill.SelectedIndex = cbSkill.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[5].Value.ToString());
-                    cbSamiti.SelectedIndex = cbSamiti.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[6].Value.ToString());
+                    tbFatherName.Text = dgvAttendance.Rows[selectedRow].Cells[3].Value.ToString();
+                    cbGender.SelectedIndex = cbGender.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[4].Value.ToString());
+                    cbContractorName.SelectedIndex = cbContractorName.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[5].Value.ToString());
+                    cbPlant.SelectedIndex = cbPlant.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[6].Value.ToString());
+                    cbSkill.SelectedIndex = cbSkill.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[7].Value.ToString());
+                    cbSamiti.SelectedIndex = cbSamiti.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[8].Value.ToString());
                     panelActions.Enabled = false;
                     dgvAttendance.Enabled = false;
                     btnState = "MODIFY";
@@ -534,16 +552,20 @@ namespace UpastitiCS
 
                 tbStaffNumber.Enabled = false;
                 tbName.Enabled = false;
+                tbFatherName.Enabled = false;
                 cbGender.Enabled = false;
+                cbContractorName.Enabled = false;
                 cbPlant.Enabled = false;
                 cbSamiti.Enabled = false;
                 cbSkill.Enabled = false;
                 tbStaffNumber.Text = dgvAttendance.Rows[selectedRow].Cells[1].Value.ToString();
                 tbName.Text = dgvAttendance.Rows[selectedRow].Cells[2].Value.ToString();
-                cbGender.SelectedIndex = cbGender.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[3].Value.ToString());
-                cbPlant.SelectedIndex = cbPlant.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[4].Value.ToString());
-                cbSkill.SelectedIndex = cbSkill.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[5].Value.ToString());
-                cbSamiti.SelectedIndex = cbSamiti.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[6].Value.ToString());
+                tbFatherName.Text = dgvAttendance.Rows[selectedRow].Cells[3].Value.ToString();
+                cbGender.SelectedIndex = cbGender.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[4].Value.ToString());
+                cbContractorName.SelectedIndex = cbContractorName.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[5].Value.ToString());
+                cbPlant.SelectedIndex = cbPlant.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[6].Value.ToString());
+                cbSkill.SelectedIndex = cbSkill.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[7].Value.ToString());
+                cbSamiti.SelectedIndex = cbSamiti.Items.IndexOf(dgvAttendance.Rows[selectedRow].Cells[8].Value.ToString());
 
                 panelActions.Enabled = false;
                 dgvAttendance.Enabled = false;

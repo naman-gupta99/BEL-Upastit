@@ -46,3 +46,4 @@ C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\De
 C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Upastiti.resources
 C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Properties.Resources.resources
 C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.csproj.GenerateResource.Cache
+C:\Users\kungf\Desktop\Upastiti\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.pdb

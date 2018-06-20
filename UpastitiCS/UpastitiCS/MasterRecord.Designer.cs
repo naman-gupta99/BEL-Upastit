@@ -34,11 +34,16 @@
             this.cbPlant = new System.Windows.Forms.ComboBox();
             this.lblPlant = new System.Windows.Forms.Label();
             this.dgvAttendance = new System.Windows.Forms.DataGridView();
+            this.colSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcBoxAsm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FathersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractorsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcMCUNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSkill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSamiti = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbStaffDetails = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbSamiti = new System.Windows.Forms.ComboBox();
             this.lblSamiti = new System.Windows.Forms.Label();
             this.cbSkill = new System.Windows.Forms.ComboBox();
@@ -62,15 +67,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelActions = new System.Windows.Forms.Panel();
             this.btnUpdateFT = new System.Windows.Forms.Button();
-            this.colSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcBoxAsm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FathersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractorsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcMCUNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSkill = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSamiti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbFatherName = new System.Windows.Forms.TextBox();
+            this.lblFatherName = new System.Windows.Forms.Label();
+            this.lblContractorName = new System.Windows.Forms.Label();
+            this.cbContractorName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.gbStaffDetails.SuspendLayout();
             this.gbFT.SuspendLayout();
@@ -138,13 +138,74 @@
             this.dgvAttendance.TabIndex = 2;
             this.dgvAttendance.SelectionChanged += new System.EventHandler(this.dgvAttendance_SelectionChanged);
             // 
+            // colSlNo
+            // 
+            this.colSlNo.HeaderText = "Sl.No";
+            this.colSlNo.Name = "colSlNo";
+            this.colSlNo.ReadOnly = true;
+            this.colSlNo.Width = 50;
+            // 
+            // dgcUnit
+            // 
+            this.dgcUnit.HeaderText = "Staff Number";
+            this.dgcUnit.Name = "dgcUnit";
+            this.dgcUnit.ReadOnly = true;
+            this.dgcUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dgcBoxAsm
+            // 
+            this.dgcBoxAsm.HeaderText = "Name";
+            this.dgcBoxAsm.MaxInputLength = 10;
+            this.dgcBoxAsm.MinimumWidth = 150;
+            this.dgcBoxAsm.Name = "dgcBoxAsm";
+            this.dgcBoxAsm.ReadOnly = true;
+            this.dgcBoxAsm.Width = 150;
+            // 
+            // FathersName
+            // 
+            this.FathersName.HeaderText = "Father\'s Name";
+            this.FathersName.Name = "FathersName";
+            this.FathersName.ReadOnly = true;
+            // 
+            // colGender
+            // 
+            this.colGender.HeaderText = "Gender";
+            this.colGender.Name = "colGender";
+            this.colGender.ReadOnly = true;
+            this.colGender.Width = 60;
+            // 
+            // ContractorsName
+            // 
+            this.ContractorsName.HeaderText = "Contractor\'s Name";
+            this.ContractorsName.Name = "ContractorsName";
+            this.ContractorsName.ReadOnly = true;
+            // 
+            // dgcMCUNo
+            // 
+            this.dgcMCUNo.HeaderText = "Plant";
+            this.dgcMCUNo.Name = "dgcMCUNo";
+            this.dgcMCUNo.ReadOnly = true;
+            // 
+            // colSkill
+            // 
+            this.colSkill.HeaderText = "Skill";
+            this.colSkill.Name = "colSkill";
+            this.colSkill.ReadOnly = true;
+            // 
+            // colSamiti
+            // 
+            this.colSamiti.HeaderText = "Samiti Name";
+            this.colSamiti.Name = "colSamiti";
+            this.colSamiti.ReadOnly = true;
+            this.colSamiti.Width = 150;
+            // 
             // gbStaffDetails
             // 
             this.gbStaffDetails.BackColor = System.Drawing.Color.Transparent;
-            this.gbStaffDetails.Controls.Add(this.comboBox1);
-            this.gbStaffDetails.Controls.Add(this.label2);
-            this.gbStaffDetails.Controls.Add(this.label1);
-            this.gbStaffDetails.Controls.Add(this.textBox1);
+            this.gbStaffDetails.Controls.Add(this.cbContractorName);
+            this.gbStaffDetails.Controls.Add(this.lblContractorName);
+            this.gbStaffDetails.Controls.Add(this.lblFatherName);
+            this.gbStaffDetails.Controls.Add(this.tbFatherName);
             this.gbStaffDetails.Controls.Add(this.cbSamiti);
             this.gbStaffDetails.Controls.Add(this.lblSamiti);
             this.gbStaffDetails.Controls.Add(this.cbSkill);
@@ -169,50 +230,6 @@
             this.gbStaffDetails.TabIndex = 1;
             this.gbStaffDetails.TabStop = false;
             this.gbStaffDetails.Text = "Staff Details";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "GRETS",
-            "SUNRISE",
-            "CLASS"});
-            this.comboBox1.Location = new System.Drawing.Point(152, 142);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 23);
-            this.comboBox1.TabIndex = 46;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 149);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 16);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "Contractor\'s Name:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(334, 54);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(113, 16);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Father\'s Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(479, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(273, 22);
-            this.textBox1.TabIndex = 43;
             // 
             // cbSamiti
             // 
@@ -501,66 +518,45 @@
             this.btnUpdateFT.UseVisualStyleBackColor = false;
             this.btnUpdateFT.Click += new System.EventHandler(this.btnUpdateFT_Click);
             // 
-            // colSlNo
+            // tbFatherName
             // 
-            this.colSlNo.HeaderText = "Sl.No";
-            this.colSlNo.Name = "colSlNo";
-            this.colSlNo.ReadOnly = true;
-            this.colSlNo.Width = 50;
+            this.tbFatherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFatherName.Location = new System.Drawing.Point(452, 62);
+            this.tbFatherName.Name = "tbFatherName";
+            this.tbFatherName.Size = new System.Drawing.Size(300, 22);
+            this.tbFatherName.TabIndex = 43;
             // 
-            // dgcUnit
+            // lblFatherName
             // 
-            this.dgcUnit.HeaderText = "Staff Number";
-            this.dgcUnit.Name = "dgcUnit";
-            this.dgcUnit.ReadOnly = true;
-            this.dgcUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lblFatherName.AutoSize = true;
+            this.lblFatherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFatherName.ForeColor = System.Drawing.Color.White;
+            this.lblFatherName.Location = new System.Drawing.Point(333, 68);
+            this.lblFatherName.Name = "lblFatherName";
+            this.lblFatherName.Size = new System.Drawing.Size(113, 16);
+            this.lblFatherName.TabIndex = 44;
+            this.lblFatherName.Text = "Father\'s Name:";
             // 
-            // dgcBoxAsm
+            // lblContractorName
             // 
-            this.dgcBoxAsm.HeaderText = "Name";
-            this.dgcBoxAsm.MaxInputLength = 10;
-            this.dgcBoxAsm.MinimumWidth = 150;
-            this.dgcBoxAsm.Name = "dgcBoxAsm";
-            this.dgcBoxAsm.ReadOnly = true;
-            this.dgcBoxAsm.Width = 150;
+            this.lblContractorName.AutoSize = true;
+            this.lblContractorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContractorName.ForeColor = System.Drawing.Color.White;
+            this.lblContractorName.Location = new System.Drawing.Point(3, 156);
+            this.lblContractorName.Name = "lblContractorName";
+            this.lblContractorName.Size = new System.Drawing.Size(140, 16);
+            this.lblContractorName.TabIndex = 45;
+            this.lblContractorName.Text = "Contractor\'s Name:";
             // 
-            // FathersName
+            // cbContractorName
             // 
-            this.FathersName.HeaderText = "Father\'s Name";
-            this.FathersName.Name = "FathersName";
-            this.FathersName.ReadOnly = true;
-            // 
-            // colGender
-            // 
-            this.colGender.HeaderText = "Gender";
-            this.colGender.Name = "colGender";
-            this.colGender.ReadOnly = true;
-            this.colGender.Width = 60;
-            // 
-            // ContractorsName
-            // 
-            this.ContractorsName.HeaderText = "Contractor\'s Name";
-            this.ContractorsName.Name = "ContractorsName";
-            this.ContractorsName.ReadOnly = true;
-            // 
-            // dgcMCUNo
-            // 
-            this.dgcMCUNo.HeaderText = "Plant";
-            this.dgcMCUNo.Name = "dgcMCUNo";
-            this.dgcMCUNo.ReadOnly = true;
-            // 
-            // colSkill
-            // 
-            this.colSkill.HeaderText = "Skill";
-            this.colSkill.Name = "colSkill";
-            this.colSkill.ReadOnly = true;
-            // 
-            // colSamiti
-            // 
-            this.colSamiti.HeaderText = "Samiti Name";
-            this.colSamiti.Name = "colSamiti";
-            this.colSamiti.ReadOnly = true;
-            this.colSamiti.Width = 150;
+            this.cbContractorName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbContractorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbContractorName.FormattingEnabled = true;
+            this.cbContractorName.Location = new System.Drawing.Point(149, 156);
+            this.cbContractorName.Name = "cbContractorName";
+            this.cbContractorName.Size = new System.Drawing.Size(179, 23);
+            this.cbContractorName.TabIndex = 46;
             // 
             // MasterRecord
             // 
@@ -616,10 +612,6 @@
         private System.Windows.Forms.Label lblSkill;
         private System.Windows.Forms.Panel panelActions;
         private System.Windows.Forms.Button btnUpdateFT;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSlNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcBoxAsm;
@@ -629,5 +621,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcMCUNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSkill;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSamiti;
+        private System.Windows.Forms.Label lblFatherName;
+        private System.Windows.Forms.TextBox tbFatherName;
+        private System.Windows.Forms.ComboBox cbContractorName;
+        private System.Windows.Forms.Label lblContractorName;
     }
 }
