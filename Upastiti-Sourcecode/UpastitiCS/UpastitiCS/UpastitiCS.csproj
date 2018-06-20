@@ -228,7 +228,6 @@
     <None Include="icons\MissIN.png" />
     <None Include="icons\MissOUT.png" />
     <None Include="icons\UL.jpg" />
-    <None Include="UPASTITI.sql" />
     <Content Include="UL.ico" />
     <Content Include="Upastiti.ico" />
     <Content Include="VotesCount.ico" />

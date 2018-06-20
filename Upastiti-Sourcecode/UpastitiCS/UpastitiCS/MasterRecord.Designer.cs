@@ -37,9 +37,7 @@
             this.colSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcBoxAsm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FathersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractorsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcMCUNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSkill = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSamiti = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,10 +65,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelActions = new System.Windows.Forms.Panel();
             this.btnUpdateFT = new System.Windows.Forms.Button();
-            this.tbFatherName = new System.Windows.Forms.TextBox();
-            this.lblFatherName = new System.Windows.Forms.Label();
-            this.lblContractorName = new System.Windows.Forms.Label();
-            this.cbContractorName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.gbStaffDetails.SuspendLayout();
             this.gbFT.SuspendLayout();
@@ -120,21 +114,19 @@
             this.colSlNo,
             this.dgcUnit,
             this.dgcBoxAsm,
-            this.FathersName,
             this.colGender,
-            this.ContractorsName,
             this.dgcMCUNo,
             this.colSkill,
             this.colSamiti});
             this.dgvAttendance.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
-            this.dgvAttendance.Location = new System.Drawing.Point(12, 334);
+            this.dgvAttendance.Location = new System.Drawing.Point(12, 267);
             this.dgvAttendance.MultiSelect = false;
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.ReadOnly = true;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dgvAttendance.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendance.Size = new System.Drawing.Size(766, 326);
+            this.dgvAttendance.Size = new System.Drawing.Size(766, 393);
             this.dgvAttendance.TabIndex = 2;
             this.dgvAttendance.SelectionChanged += new System.EventHandler(this.dgvAttendance_SelectionChanged);
             // 
@@ -161,24 +153,12 @@
             this.dgcBoxAsm.ReadOnly = true;
             this.dgcBoxAsm.Width = 150;
             // 
-            // FathersName
-            // 
-            this.FathersName.HeaderText = "Father\'s Name";
-            this.FathersName.Name = "FathersName";
-            this.FathersName.ReadOnly = true;
-            // 
             // colGender
             // 
             this.colGender.HeaderText = "Gender";
             this.colGender.Name = "colGender";
             this.colGender.ReadOnly = true;
             this.colGender.Width = 60;
-            // 
-            // ContractorsName
-            // 
-            this.ContractorsName.HeaderText = "Contractor\'s Name";
-            this.ContractorsName.Name = "ContractorsName";
-            this.ContractorsName.ReadOnly = true;
             // 
             // dgcMCUNo
             // 
@@ -202,10 +182,6 @@
             // gbStaffDetails
             // 
             this.gbStaffDetails.BackColor = System.Drawing.Color.Transparent;
-            this.gbStaffDetails.Controls.Add(this.cbContractorName);
-            this.gbStaffDetails.Controls.Add(this.lblContractorName);
-            this.gbStaffDetails.Controls.Add(this.lblFatherName);
-            this.gbStaffDetails.Controls.Add(this.tbFatherName);
             this.gbStaffDetails.Controls.Add(this.cbSamiti);
             this.gbStaffDetails.Controls.Add(this.lblSamiti);
             this.gbStaffDetails.Controls.Add(this.cbSkill);
@@ -226,7 +202,7 @@
             this.gbStaffDetails.ForeColor = System.Drawing.Color.White;
             this.gbStaffDetails.Location = new System.Drawing.Point(12, 64);
             this.gbStaffDetails.Name = "gbStaffDetails";
-            this.gbStaffDetails.Size = new System.Drawing.Size(766, 264);
+            this.gbStaffDetails.Size = new System.Drawing.Size(766, 196);
             this.gbStaffDetails.TabIndex = 1;
             this.gbStaffDetails.TabStop = false;
             this.gbStaffDetails.Text = "Staff Details";
@@ -236,7 +212,7 @@
             this.cbSamiti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSamiti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSamiti.FormattingEnabled = true;
-            this.cbSamiti.Location = new System.Drawing.Point(117, 113);
+            this.cbSamiti.Location = new System.Drawing.Point(117, 120);
             this.cbSamiti.Name = "cbSamiti";
             this.cbSamiti.Size = new System.Drawing.Size(211, 23);
             this.cbSamiti.TabIndex = 5;
@@ -247,7 +223,7 @@
             this.lblSamiti.BackColor = System.Drawing.Color.Transparent;
             this.lblSamiti.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSamiti.ForeColor = System.Drawing.Color.White;
-            this.lblSamiti.Location = new System.Drawing.Point(7, 114);
+            this.lblSamiti.Location = new System.Drawing.Point(7, 122);
             this.lblSamiti.Name = "lblSamiti";
             this.lblSamiti.Size = new System.Drawing.Size(109, 18);
             this.lblSamiti.TabIndex = 42;
@@ -316,7 +292,7 @@
             this.gbFT.Controls.Add(this.btnCapture);
             this.gbFT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFT.ForeColor = System.Drawing.Color.White;
-            this.gbFT.Location = new System.Drawing.Point(354, 113);
+            this.gbFT.Location = new System.Drawing.Point(340, 52);
             this.gbFT.Name = "gbFT";
             this.gbFT.Size = new System.Drawing.Size(412, 135);
             this.gbFT.TabIndex = 7;
@@ -389,7 +365,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(333, 22);
+            this.lblName.Location = new System.Drawing.Point(337, 23);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(53, 16);
             this.lblName.TabIndex = 34;
@@ -401,7 +377,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::UpastitiCS.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(211, 207);
+            this.btnCancel.Location = new System.Drawing.Point(216, 148);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(117, 42);
             this.btnCancel.TabIndex = 9;
@@ -424,7 +400,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::UpastitiCS.Properties.Resources.save;
-            this.btnSave.Location = new System.Drawing.Point(84, 207);
+            this.btnSave.Location = new System.Drawing.Point(94, 149);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(116, 41);
             this.btnSave.TabIndex = 8;
@@ -518,52 +494,12 @@
             this.btnUpdateFT.UseVisualStyleBackColor = false;
             this.btnUpdateFT.Click += new System.EventHandler(this.btnUpdateFT_Click);
             // 
-            // tbFatherName
-            // 
-            this.tbFatherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFatherName.Location = new System.Drawing.Point(452, 62);
-            this.tbFatherName.Name = "tbFatherName";
-            this.tbFatherName.Size = new System.Drawing.Size(300, 22);
-            this.tbFatherName.TabIndex = 43;
-            // 
-            // lblFatherName
-            // 
-            this.lblFatherName.AutoSize = true;
-            this.lblFatherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFatherName.ForeColor = System.Drawing.Color.White;
-            this.lblFatherName.Location = new System.Drawing.Point(333, 68);
-            this.lblFatherName.Name = "lblFatherName";
-            this.lblFatherName.Size = new System.Drawing.Size(113, 16);
-            this.lblFatherName.TabIndex = 44;
-            this.lblFatherName.Text = "Father\'s Name:";
-            // 
-            // lblContractorName
-            // 
-            this.lblContractorName.AutoSize = true;
-            this.lblContractorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContractorName.ForeColor = System.Drawing.Color.White;
-            this.lblContractorName.Location = new System.Drawing.Point(3, 156);
-            this.lblContractorName.Name = "lblContractorName";
-            this.lblContractorName.Size = new System.Drawing.Size(140, 16);
-            this.lblContractorName.TabIndex = 45;
-            this.lblContractorName.Text = "Contractor\'s Name:";
-            // 
-            // cbContractorName
-            // 
-            this.cbContractorName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbContractorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbContractorName.FormattingEnabled = true;
-            this.cbContractorName.Location = new System.Drawing.Point(149, 156);
-            this.cbContractorName.Name = "cbContractorName";
-            this.cbContractorName.Size = new System.Drawing.Size(179, 23);
-            this.cbContractorName.TabIndex = 46;
-            // 
             // MasterRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UpastitiCS.Properties.Resources.gray3;
-            this.ClientSize = new System.Drawing.Size(791, 662);
+            this.ClientSize = new System.Drawing.Size(784, 662);
             this.Controls.Add(this.panelActions);
             this.Controls.Add(this.gbStaffDetails);
             this.Controls.Add(this.dgvAttendance);
@@ -610,20 +546,14 @@
         private System.Windows.Forms.Label lblSamiti;
         private System.Windows.Forms.ComboBox cbSkill;
         private System.Windows.Forms.Label lblSkill;
-        private System.Windows.Forms.Panel panelActions;
-        private System.Windows.Forms.Button btnUpdateFT;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSlNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcBoxAsm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FathersName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContractorsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcMCUNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSkill;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSamiti;
-        private System.Windows.Forms.Label lblFatherName;
-        private System.Windows.Forms.TextBox tbFatherName;
-        private System.Windows.Forms.ComboBox cbContractorName;
-        private System.Windows.Forms.Label lblContractorName;
+        private System.Windows.Forms.Panel panelActions;
+        private System.Windows.Forms.Button btnUpdateFT;
     }
 }

@@ -34,16 +34,4 @@ E:\vProjects\Upastiti-v2.0\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Properties
 E:\vProjects\Upastiti-v2.0\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.csproj.GenerateResource.Cache
 E:\vProjects\Upastiti-v2.0\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.exe
 E:\vProjects\Upastiti-v2.0\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.pdb
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.pdb
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.About.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Auth.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Configuration.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.MissIN.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.MissOUT.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.MasterRecord.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Reports.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Upastiti.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.Properties.Resources.resources
-C:\Users\kungf\Desktop\jitender\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\UpastitiCS.csproj.GenerateResource.Cache
-C:\Users\kungf\Desktop\Upastiti\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.pdb
+C:\Users\PATILSIR\Desktop\Upastiti-SourceCode\UpastitiCS\UpastitiCS\obj\Debug\Upastiti.pdb

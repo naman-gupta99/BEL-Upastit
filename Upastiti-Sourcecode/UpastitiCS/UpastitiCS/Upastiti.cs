@@ -25,7 +25,7 @@ namespace UpastitiCS
 
         //Related to Biometric Module
         private MFS100 mfs100 = null;
-        private int quality = 70;   //Allowed Value Range 1 to 1000
+        private int quality = 70;   //Allowed Value Range 1 -to 1000
         private int timeout = -1; // -1 for Infinite, Only a successful finger capture or StopCapture Can stop.
         //private byte[] ANSITemplate1 = null;
         //private byte[] ANSITemplate2 = null;

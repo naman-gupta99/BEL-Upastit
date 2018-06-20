@@ -19,11 +19,11 @@ namespace UpastitiCS
         public string sqlException = null;
         public MsSQL()
         {
-            hostName = @"localhost";
+            hostName = @"TESTINGMMF\SQLEXPRESS";
            // port = "3306";
-            username = "root";
+            username = "sa";
             password = "";
-            dbname = "upastiti";
+            dbname = "UPASTITI";
         }
         public void initMsSQL(string host, string dbName, string uname, string pwd)
         {

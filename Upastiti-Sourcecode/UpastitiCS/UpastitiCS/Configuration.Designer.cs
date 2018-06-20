@@ -297,7 +297,7 @@
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(203, 21);
             this.tbUserName.TabIndex = 2;
-            this.tbUserName.Text = "root";
+            this.tbUserName.Text = "sa";
             // 
             // tbDBPort
             // 
@@ -306,7 +306,7 @@
             this.tbDBPort.Name = "tbDBPort";
             this.tbDBPort.Size = new System.Drawing.Size(203, 21);
             this.tbDBPort.TabIndex = 1;
-            this.tbDBPort.Text = "upastiti";
+            this.tbDBPort.Text = "UPASTITI";
             // 
             // tbHost
             // 
@@ -315,7 +315,7 @@
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(203, 21);
             this.tbHost.TabIndex = 0;
-            this.tbHost.Text = "localhost";
+            this.tbHost.Text = "TESTINGMMF\\SQLEXPRESS";
             // 
             // lblPassword
             // 
@@ -501,7 +501,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UpastitiCS.Properties.Resources.gray3;
-            this.ClientSize = new System.Drawing.Size(853, 550);
+            this.ClientSize = new System.Drawing.Size(832, 441);
             this.Controls.Add(this.gbDefaultPlant);
             this.Controls.Add(this.gbResetPass);
             this.Controls.Add(this.gbDBParams);
@@ -512,7 +512,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Configuration";
-            this.Load += new System.EventHandler(this.Configuration_Load);
             this.gbPlant.ResumeLayout(false);
             this.gbPlant.PerformLayout();
             this.gbSamiti.ResumeLayout(false);

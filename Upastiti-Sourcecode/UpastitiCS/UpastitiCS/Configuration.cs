@@ -534,11 +534,6 @@ namespace UpastitiCS
             }
         }
 
-        private void Configuration_Load(object sender, EventArgs e)
-        {
-
-        }
-
        
 
 
