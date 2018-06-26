@@ -463,25 +463,26 @@ namespace UpastitiCS
                 if (mssql != null && mssql.isConnected())
                 {
                     dgvAttendance.Rows.Clear();
-                    SqlCommand cmd = new SqlCommand(string.Format("SELECT m.staffno,s.staffname,s.gender,s.plantname,m.moveon,m.shiftcode from movement as m,staff as s where m.staffno=s.staffno AND s.plantname='{0}' AND CAST(m.moveon as DATE)=CAST(CURRENT_TIMESTAMP as DATE) order by m.moveon ;", DefaultPlant), mssql.getConnection());
+                    SqlCommand cmd = new SqlCommand(string.Format("SELECT m.staffno,s.staffname,s.fathername,s.samitiname,s.contractorname,m.moveon,m.shiftcode from movement as m,staff as s where m.staffno=s.staffno AND s.plantname='{0}' AND CAST(m.moveon as DATE)=CAST(CURRENT_TIMESTAMP as DATE) order by m.moveon ;", DefaultPlant), mssql.getConnection());
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         dgvAttendance.Rows.Insert(0, 1);
-                        dgvAttendance.Rows[0].Cells[0].Value = reader.GetInt32(0).ToString();
-                        dgvAttendance.Rows[0].Cells[1].Value = reader.GetString(1);
-                        dgvAttendance.Rows[0].Cells[2].Value = reader.GetString(2);
-                        dgvAttendance.Rows[0].Cells[3].Value = reader.GetString(3);
-                        dgvAttendance.Rows[0].Cells[4].Value = reader.GetDateTime(4).ToString("dd-MM-yyyy hh:mm:ss");
-                        dgvAttendance.Rows[0].Cells[5].Value = reader.GetString(5);
+                        dgvAttendance.Rows[0].Cells[0].Value = reader.GetString(0); //staffno
+                        dgvAttendance.Rows[0].Cells[1].Value = reader.GetString(1); //staffname
+                        dgvAttendance.Rows[0].Cells[2].Value = reader.GetString(2); //fathername
+                        dgvAttendance.Rows[0].Cells[3].Value = reader.GetString(3); //samitiname
+                        dgvAttendance.Rows[0].Cells[4].Value = reader.GetString(4); //contractorname
+                        dgvAttendance.Rows[0].Cells[5].Value = reader.GetDateTime(5).ToString("dd-MM-yyyy hh:mm:ss"); //moveon
+                        dgvAttendance.Rows[0].Cells[6].Value = reader.GetString(6); //shiftcode
 
-                        if (regShift.Match(reader.GetString(5)).Groups[2].Value == "IN")
+                        if (regShift.Match(reader.GetString(6)).Groups[2].Value == "IN")
                         {
-                            dgvAttendance.Rows[0].Cells[5].Style.ForeColor = Color.Green;
+                            dgvAttendance.Rows[0].Cells[6].Style.ForeColor = Color.Green;
                         }
                         else
                         {
-                            dgvAttendance.Rows[0].Cells[5].Style.ForeColor = Color.Red;
+                            dgvAttendance.Rows[0].Cells[6].Style.ForeColor = Color.Red;
                         }
                         dgvAttendance.Refresh();
                     }
@@ -507,28 +508,29 @@ namespace UpastitiCS
             //}
             try
             {
-                SqlCommand cmd = new SqlCommand(string.Format("SELECT TOP 1 m.staffno,s.staffname,s.gender,s.plantname,m.moveon,m.shiftcode from movement as m,staff as s where m.staffno=s.staffno AND s.plantname='{0}' AND CAST(m.moveon as DATE)=CAST(CURRENT_TIMESTAMP as DATE) order by m.moveon desc;", DefaultPlant), mssql.getConnection());
+                SqlCommand cmd = new SqlCommand(string.Format("SELECT TOP 1 m.staffno,s.staffname,s.fathername,s.samitiname,s.contractorname,m.moveon,m.shiftcode from movement as m,staff as s where m.staffno=s.staffno AND s.plantname='{0}' AND CAST(m.moveon as DATE)=CAST(CURRENT_TIMESTAMP as DATE) order by m.moveon desc;", DefaultPlant), mssql.getConnection());
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     dgvAttendance.Rows.Insert(0, 1);
-                    dgvAttendance.Rows[0].Cells[0].Value = reader.GetInt32(0).ToString();
-                    dgvAttendance.Rows[0].Cells[1].Value = reader.GetString(1);
-                    dgvAttendance.Rows[0].Cells[2].Value = reader.GetString(2);
-                    dgvAttendance.Rows[0].Cells[3].Value = reader.GetString(3);
-                    dgvAttendance.Rows[0].Cells[4].Value = reader.GetDateTime(4).ToString("dd-MM-yyyy hh:mm:ss");
-                    dgvAttendance.Rows[0].Cells[5].Value = reader.GetString(5);
+                    dgvAttendance.Rows[0].Cells[0].Value = reader.GetString(0); //staffno
+                    dgvAttendance.Rows[0].Cells[1].Value = reader.GetString(1); //staffname
+                    dgvAttendance.Rows[0].Cells[2].Value = reader.GetString(2); //fathername
+                    dgvAttendance.Rows[0].Cells[3].Value = reader.GetString(3); //samitiname
+                    dgvAttendance.Rows[0].Cells[4].Value = reader.GetString(4); //contractorname
+                    dgvAttendance.Rows[0].Cells[5].Value = reader.GetDateTime(5).ToString("dd-MM-yyyy hh:mm:ss"); //moveon
+                    dgvAttendance.Rows[0].Cells[6].Value = reader.GetString(6); //shiftcode
 
-                    if (regShift.Match(reader.GetString(5)).Groups[2].Value == "IN")
+                    if (regShift.Match(reader.GetString(6)).Groups[2].Value == "IN")
                     {
-                        dgvAttendance.Rows[0].Cells[5].Style.ForeColor = Color.Green;
+                        dgvAttendance.Rows[0].Cells[6].Style.ForeColor = Color.Green;
                     }
                     else
                     {
-                        dgvAttendance.Rows[0].Cells[5].Style.ForeColor = Color.Red;
+                        dgvAttendance.Rows[0].Cells[6].Style.ForeColor = Color.Red;
                     }
 
-                    lblStaffNo.Text = reader.GetInt32(0).ToString();
+                    lblStaffNo.Text = reader.GetString(0);
                     lblStaffName.Text = reader.GetString(1);
                     lblStaffNo.Refresh();
                     lblStaffName.Refresh();
@@ -1106,6 +1108,11 @@ namespace UpastitiCS
             {
                 btnStop_Click(sender, e);
             }
+        }
+
+        private void lblShiftSelected_Click(object sender, EventArgs e)
+        {
+
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////

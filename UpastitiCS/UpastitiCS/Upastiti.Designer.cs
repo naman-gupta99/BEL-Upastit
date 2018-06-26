@@ -46,12 +46,6 @@
             this.lblStaffName = new System.Windows.Forms.Label();
             this.pbFinger = new System.Windows.Forms.PictureBox();
             this.dgvAttendance = new System.Windows.Forms.DataGridView();
-            this.colStaffNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPlant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShiftCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblShiftSelected = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +68,13 @@
             this.lbl3rdShiftCount = new System.Windows.Forms.Label();
             this.lblGSCount = new System.Windows.Forms.Label();
             this.minTimer = new System.Windows.Forms.Timer(this.components);
+            this.colStaffNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFatherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSamitiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContractorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShiftCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
@@ -84,11 +85,11 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblTitle.Font = new System.Drawing.Font("Tempus Sans ITC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(14, 27);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(913, 42);
+            this.lblTitle.Size = new System.Drawing.Size(950, 37);
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "Upastiti - A Biometric-based Attendance Management System";
             // 
@@ -240,9 +241,9 @@
             // pbFinger
             // 
             this.pbFinger.BackColor = System.Drawing.Color.Transparent;
-            this.pbFinger.Location = new System.Drawing.Point(750, 261);
+            this.pbFinger.Location = new System.Drawing.Point(770, 284);
             this.pbFinger.Name = "pbFinger";
-            this.pbFinger.Size = new System.Drawing.Size(156, 213);
+            this.pbFinger.Size = new System.Drawing.Size(136, 190);
             this.pbFinger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFinger.TabIndex = 46;
             this.pbFinger.TabStop = false;
@@ -263,8 +264,9 @@
             this.dgvAttendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colStaffNo,
             this.colStaffName,
-            this.colGender,
-            this.colPlant,
+            this.colFatherName,
+            this.colSamitiName,
+            this.colContractorName,
             this.colTime,
             this.colShiftCode});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -287,60 +289,21 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAttendance.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendance.Size = new System.Drawing.Size(700, 471);
+            this.dgvAttendance.Size = new System.Drawing.Size(733, 471);
             this.dgvAttendance.TabIndex = 47;
             this.dgvAttendance.TabStop = false;
-            // 
-            // colStaffNo
-            // 
-            this.colStaffNo.HeaderText = "Staff No";
-            this.colStaffNo.Name = "colStaffNo";
-            this.colStaffNo.ReadOnly = true;
-            this.colStaffNo.Width = 80;
-            // 
-            // colStaffName
-            // 
-            this.colStaffName.HeaderText = "Name";
-            this.colStaffName.Name = "colStaffName";
-            this.colStaffName.ReadOnly = true;
-            this.colStaffName.Width = 150;
-            // 
-            // colGender
-            // 
-            this.colGender.HeaderText = "Gender";
-            this.colGender.Name = "colGender";
-            this.colGender.ReadOnly = true;
-            this.colGender.Width = 50;
-            // 
-            // colPlant
-            // 
-            this.colPlant.HeaderText = "Plant";
-            this.colPlant.Name = "colPlant";
-            this.colPlant.ReadOnly = true;
-            // 
-            // colTime
-            // 
-            this.colTime.HeaderText = "Time";
-            this.colTime.Name = "colTime";
-            this.colTime.ReadOnly = true;
-            this.colTime.Width = 150;
-            // 
-            // colShiftCode
-            // 
-            this.colShiftCode.HeaderText = "Shift Code";
-            this.colShiftCode.Name = "colShiftCode";
-            this.colShiftCode.ReadOnly = true;
             // 
             // lblShiftSelected
             // 
             this.lblShiftSelected.BackColor = System.Drawing.Color.Transparent;
             this.lblShiftSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShiftSelected.ForeColor = System.Drawing.Color.White;
-            this.lblShiftSelected.Location = new System.Drawing.Point(718, 206);
+            this.lblShiftSelected.Location = new System.Drawing.Point(770, 206);
             this.lblShiftSelected.Name = "lblShiftSelected";
-            this.lblShiftSelected.Size = new System.Drawing.Size(220, 35);
+            this.lblShiftSelected.Size = new System.Drawing.Size(168, 35);
             this.lblShiftSelected.TabIndex = 48;
             this.lblShiftSelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblShiftSelected.Click += new System.EventHandler(this.lblShiftSelected_Click);
             // 
             // menuStrip1
             // 
@@ -436,7 +399,7 @@
             this.startToolStripMenuItem.Image = global::UpastitiCS.Properties.Resources.start;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.startToolStripMenuItem.Text = "&Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -445,7 +408,7 @@
             this.stopToolStripMenuItem.Image = global::UpastitiCS.Properties.Resources.stop;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.stopToolStripMenuItem.Text = "Sto&p";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -454,7 +417,7 @@
             this.historyToolStripMenuItem.Image = global::UpastitiCS.Properties.Resources.history;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             this.historyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.historyToolStripMenuItem.Text = "&History";
             this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
@@ -550,6 +513,51 @@
             this.minTimer.Interval = 60000;
             this.minTimer.Tick += new System.EventHandler(this.minTimer_Tick);
             // 
+            // colStaffNo
+            // 
+            this.colStaffNo.HeaderText = "Staff No";
+            this.colStaffNo.Name = "colStaffNo";
+            this.colStaffNo.ReadOnly = true;
+            this.colStaffNo.Width = 50;
+            // 
+            // colStaffName
+            // 
+            this.colStaffName.HeaderText = "Name";
+            this.colStaffName.Name = "colStaffName";
+            this.colStaffName.ReadOnly = true;
+            // 
+            // colFatherName
+            // 
+            this.colFatherName.HeaderText = "Father\'s Name";
+            this.colFatherName.Name = "colFatherName";
+            this.colFatherName.ReadOnly = true;
+            // 
+            // colSamitiName
+            // 
+            this.colSamitiName.HeaderText = "Samiti Name";
+            this.colSamitiName.Name = "colSamitiName";
+            this.colSamitiName.ReadOnly = true;
+            // 
+            // colContractorName
+            // 
+            this.colContractorName.HeaderText = "Contractor name";
+            this.colContractorName.Name = "colContractorName";
+            this.colContractorName.ReadOnly = true;
+            this.colContractorName.Width = 80;
+            // 
+            // colTime
+            // 
+            this.colTime.HeaderText = "Time";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
+            this.colTime.Width = 160;
+            // 
+            // colShiftCode
+            // 
+            this.colShiftCode.HeaderText = "Shift Code";
+            this.colShiftCode.Name = "colShiftCode";
+            this.colShiftCode.ReadOnly = true;
+            // 
             // Upastiti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,12 +609,6 @@
         private System.Windows.Forms.Label lblShiftCode;
         private System.Windows.Forms.ComboBox cbShiftCode;
         private System.Windows.Forms.Label lblShiftSelected;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPlant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShiftCode;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
@@ -628,6 +630,13 @@
         private System.Windows.Forms.Label lbl3rdShiftCount;
         private System.Windows.Forms.Label lblGSCount;
         private System.Windows.Forms.Timer minTimer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFatherName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSamitiName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colContractorName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShiftCode;
     }
 }
 
