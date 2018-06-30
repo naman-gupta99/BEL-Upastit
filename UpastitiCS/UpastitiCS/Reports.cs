@@ -52,7 +52,7 @@ namespace UpastitiCS
             lbIRStaff.Items.Clear();
             while (reader.Read())
             {
-                lbIRStaff.Items.Add(reader.GetInt32(0).ToString() +"-" +reader.GetString(1));
+                lbIRStaff.Items.Add(reader.GetInt32(0).ToString() + "-" + reader.GetString(1));
                 lbMRStaff.Items.Add(reader.GetInt32(0).ToString() + "-" + reader.GetString(1));
             }
             reader.Close();
@@ -304,18 +304,20 @@ namespace UpastitiCS
 
             if (mssql != null && mssql.isConnected())
             {
-                    SqlCommand cmd = new SqlCommand(string.Format("SELECT plantname,gender,skilllevel,samitiname FROM staff where staffno={0};", staffno), mssql.getConnection());
+                    SqlCommand cmd = new SqlCommand(string.Format("SELECT fathername,plantname,gender,skilllevel,samitiname,contractorname FROM staff where staffno={0};", staffno), mssql.getConnection());
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                       paragraph.AddFormattedText("\nPlant: " + reader.GetString(0), TextFormat.Bold);
+                       paragraph.AddFormattedText("\nFather's Name: " + reader.GetString(0), TextFormat.Bold);
+                       paragraph.AddFormattedText("\nPlant: " + reader.GetString(1), TextFormat.Bold);
                        paragraph = section.AddParagraph();
                        paragraph.Style = "Ref2";
                        paragraph.Format.SpaceBefore = "-1.25cm";
                        paragraph.Format.Alignment = ParagraphAlignment.Right;
-                       paragraph.AddFormattedText("Skill Level: " + reader.GetString(2), TextFormat.Bold);
-                       paragraph.AddFormattedText("\nGender: " + reader.GetString(1), TextFormat.Bold);
-                       paragraph.AddFormattedText("\nSamiti/Agency: " + reader.GetString(3), TextFormat.Bold);
+                       paragraph.AddFormattedText("Skill Level: " + reader.GetString(3), TextFormat.Bold);
+                       paragraph.AddFormattedText("\nGender: " + reader.GetString(2), TextFormat.Bold);
+                       paragraph.AddFormattedText("\nSamiti/Agency: " + reader.GetString(4), TextFormat.Bold);
+                       paragraph.AddFormattedText("\nContractor's Name: " + reader.GetString(5), TextFormat.Bold);
                     }
                     reader.Close();
                 
@@ -619,17 +621,17 @@ namespace UpastitiCS
              string prevStaffNo = "", prevShiftCode = "";
              int roundOff = 0;
              DateTime dt1 = DateTime.Now, dt2;
-             string query = string.Format("select m.staffno,s.staffname,m.moveon,m.shiftcode,s.gender,s.skilllevel from movement as m, staff as s where m.staffno=s.staffno "
+             string query = string.Format("select m.staffno,s.staffname,s.fathername,m.moveon,m.shiftcode,s.gender,s.skilllevel,s.contractorname from movement as m, staff as s where m.staffno=s.staffno "
                  + "and m.moveon BETWEEN DATEADD(m, DATEDIFF(m, 0, '{0}'), 0)  AND DATEADD(hour, 8, DATEADD(month, DATEDIFF(month, 0, '{0}') + 1, 0)) and m.staffno IN ({1}) order by m.staffno,m.moveon;", forMonth.ToString("yyyy-MM-dd HH:mm:ss"), stafflist);
              DateTime lastDate = getLastDateOfAttendance(forMonth);
              SqlCommand cmd = new SqlCommand(query, mssql.getConnection());
              SqlDataReader reader = cmd.ExecuteReader();
              while (reader.Read())
              {
-                 if (regShift.Match(reader.GetString(3)).Groups[2].Value == "IN")
+                 if (regShift.Match(reader.GetString(4)).Groups[2].Value == "IN")
                  {
 
-                     if (prevStaffNo != reader.GetInt32(0).ToString())
+                     if (prevStaffNo != reader.GetString(0))
                      {
                          if (i > 0 && row != null)
                          {
@@ -649,23 +651,24 @@ namespace UpastitiCS
                          }
 
                          i++;
-                         prevStaffNo = reader.GetInt32(0).ToString();
+                         prevStaffNo = reader.GetString(0);
                          row = table.AddRow();
                          row.Format.Alignment = ParagraphAlignment.Center;
                          //row.Shading.Color = new MigraDoc.DocumentObjectModel.Color(235, 240, 249);
                          row.Cells[0].AddParagraph((i).ToString());
                          row.Cells[1].AddParagraph(prevStaffNo);
                          row.Cells[2].AddParagraph(reader.GetString(1));
-                         row.Cells[3].AddParagraph(reader.GetString(4));
-                         row.Cells[4].AddParagraph(reader.GetString(5));
+                         row.Cells[3].AddParagraph(reader.GetString(5));
+                         row.Cells[4].AddParagraph(reader.GetString(6));
+                         row.Cells[5].AddParagraph(reader.GetString(7));
                      }
-                     prevShiftCode = regShift.Match(reader.GetString(3)).Groups[1].Value;
-                     dt1 = reader.GetDateTime(2);
+                     prevShiftCode = regShift.Match(reader.GetString(4)).Groups[1].Value;
+                     dt1 = reader.GetDateTime(3);
                  }
-                 else if (prevStaffNo == reader.GetInt32(0).ToString() && prevShiftCode == regShift.Match(reader.GetString(3)).Groups[1].Value && row != null)
+                 else if (prevStaffNo == reader.GetString(0) && prevShiftCode == regShift.Match(reader.GetString(4)).Groups[1].Value && row != null)
                  {
 
-                     dt2 = reader.GetDateTime(2);
+                     dt2 = reader.GetDateTime(3);
                      TimeSpan ts = dt2.Subtract(dt1);
                      //To Fill A's If there are no records in between
                      while (tillDay + 1 < dt1.Day)
@@ -731,19 +734,19 @@ namespace UpastitiCS
             int i = 0;
             string prevStaffNo="", prevShiftCode="";
             DateTime dt1=DateTime.Now,dt2;
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT s.staffno,s.staffname,s.plantname,m.moveon,m.shiftcode,s.gender,s.skilllevel FROM staff as s, movement as m where m.staffno=s.staffno and s.plantname='{1}' and m.moveon BETWEEN '{0} 00:00:00' AND DATEADD(hour,7,'{0} 23:59:59') order by m.staffno,m.moveon;", day,DefaultPlant), mssql.getConnection());
+            SqlCommand cmd = new SqlCommand(string.Format("SELECT s.staffno,s.staffname,s.fathername,s.plantname,m.moveon,m.shiftcode,s.gender,s.skilllevel,s.samitiname, s.contractorname FROM staff as s, movement as m where m.staffno=s.staffno and s.plantname='{1}' and m.moveon BETWEEN '{0} 00:00:00' AND DATEADD(hour,7,'{0} 23:59:59') order by m.staffno,m.moveon;", day,DefaultPlant), mssql.getConnection());
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if (regShift.Match(reader.GetString(4)).Groups[2].Value == "IN")
+                if (regShift.Match(reader.GetString(5)).Groups[2].Value == "IN")
                 {
                     i++;
-                    dt1 = reader.GetDateTime(3);
+                    dt1 = reader.GetDateTime(4);
                     //Skip Next Day IN Punches, if any
                     if (dt1.ToString("yyyy-MM-dd")!=day)
                         continue;
                     prevStaffNo = reader.GetInt32(0).ToString();
-                    prevShiftCode = regShift.Match(reader.GetString(4)).Groups[1].Value;
+                    prevShiftCode = regShift.Match(reader.GetString(5)).Groups[1].Value;
                     row = table.AddRow();
                     row.Format.Alignment = ParagraphAlignment.Center;
                     //row.Shading.Color = new MigraDoc.DocumentObjectModel.Color(235, 240, 249);
@@ -753,14 +756,18 @@ namespace UpastitiCS
                     row.Cells[1].AddParagraph(prevStaffNo);
                     //row.Cells[1].Format.Alignment = ParagraphAlignment.Right;
                     row.Cells[2].AddParagraph(reader.GetString(1));
-                    row.Cells[5].AddParagraph(reader.GetString(2));
-                    row.Cells[3].AddParagraph(reader.GetString(5));
+                    row.Cells[3].AddParagraph(reader.GetString(2));
+                    row.Cells[6].AddParagraph(reader.GetString(3));
                     row.Cells[4].AddParagraph(reader.GetString(6));
+                    row.Cells[5].AddParagraph(reader.GetString(7));
+                    row.Cells[7].AddParagraph(reader.GetString(8));
+                    row.Cells[8].AddParagraph(reader.GetString(9));
                     
-                    row.Cells[6].AddParagraph(dt1.Hour.ToString("D2")+":"+dt1.Minute.ToString("D2"));
+                    
+                    row.Cells[9].AddParagraph(dt1.Hour.ToString("D2")+":"+dt1.Minute.ToString("D2"));
 
                     //Update Color if Regularisation is Found
-                    Paragraph p=row.Cells[10].AddParagraph();
+                    Paragraph p=row.Cells[14].AddParagraph();
                     if (prevShiftCode[0] == 'U')
                     {
                         p.Format.Font.Color = new MigraDoc.DocumentObjectModel.Color(255, 0, 0);
@@ -1329,6 +1336,11 @@ namespace UpastitiCS
                 MessageBox.Show(this, ex.Message, "Exception@cbPlant_SelectedIndexChanged", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("Exception(Rep:cbPlant_SelectedIndexChanged):" + ex.Message);
             }
+        }
+
+        private void Reports_Load(object sender, EventArgs e)
+        {
+
         }
 
       

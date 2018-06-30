@@ -64,11 +64,11 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblTitle.Font = new System.Drawing.Font("Tempus Sans ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(233, 2);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 35);
+            this.lblTitle.Size = new System.Drawing.Size(210, 31);
             this.lblTitle.TabIndex = 19;
             this.lblTitle.Text = "Upastiti Report";
             // 
@@ -384,6 +384,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reports";
+            this.Load += new System.EventHandler(this.Reports_Load);
             this.gbMonthReport.ResumeLayout(false);
             this.gbMonthReport.PerformLayout();
             this.gbDayReport.ResumeLayout(false);
