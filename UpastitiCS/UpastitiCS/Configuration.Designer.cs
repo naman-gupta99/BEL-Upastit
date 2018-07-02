@@ -61,11 +61,19 @@
             this.cbSelectPlant = new System.Windows.Forms.ComboBox();
             this.lblSelectPlant = new System.Windows.Forms.Label();
             this.btnUpdatePlant = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbContractorTitle = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnContractorAdd = new System.Windows.Forms.Button();
+            this.btnContractorRemove = new System.Windows.Forms.Button();
+            this.cbContractor = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbPlant.SuspendLayout();
             this.gbSamiti.SuspendLayout();
             this.gbDBParams.SuspendLayout();
             this.gbResetPass.SuspendLayout();
             this.gbDefaultPlant.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPlant
@@ -396,7 +404,7 @@
             this.gbResetPass.Controls.Add(this.btnResetPass);
             this.gbResetPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbResetPass.ForeColor = System.Drawing.Color.White;
-            this.gbResetPass.Location = new System.Drawing.Point(11, 355);
+            this.gbResetPass.Location = new System.Drawing.Point(14, 515);
             this.gbResetPass.Name = "gbResetPass";
             this.gbResetPass.Size = new System.Drawing.Size(812, 74);
             this.gbResetPass.TabIndex = 4;
@@ -496,12 +504,105 @@
             this.btnUpdatePlant.UseVisualStyleBackColor = false;
             this.btnUpdatePlant.Click += new System.EventHandler(this.btnUpdatePlant_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.tbContractorTitle);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnContractorAdd);
+            this.groupBox1.Controls.Add(this.btnContractorRemove);
+            this.groupBox1.Controls.Add(this.cbContractor);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(183, 361);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(400, 148);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Manage Contractor";
+            // 
+            // tbContractorTitle
+            // 
+            this.tbContractorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContractorTitle.Location = new System.Drawing.Point(96, 61);
+            this.tbContractorTitle.MaxLength = 249;
+            this.tbContractorTitle.Name = "tbContractorTitle";
+            this.tbContractorTitle.Size = new System.Drawing.Size(282, 21);
+            this.tbContractorTitle.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(45, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 20);
+            this.label1.TabIndex = 30;
+            this.label1.Tag = "";
+            this.label1.Text = "Title:";
+            this.label1.UseMnemonic = false;
+            // 
+            // btnContractorAdd
+            // 
+            this.btnContractorAdd.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnContractorAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContractorAdd.ForeColor = System.Drawing.Color.White;
+            this.btnContractorAdd.Image = global::UpastitiCS.Properties.Resources.add;
+            this.btnContractorAdd.Location = new System.Drawing.Point(93, 100);
+            this.btnContractorAdd.Name = "btnContractorAdd";
+            this.btnContractorAdd.Size = new System.Drawing.Size(103, 40);
+            this.btnContractorAdd.TabIndex = 2;
+            this.btnContractorAdd.Text = "A&dd";
+            this.btnContractorAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContractorAdd.UseVisualStyleBackColor = false;
+            // 
+            // btnContractorRemove
+            // 
+            this.btnContractorRemove.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnContractorRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContractorRemove.ForeColor = System.Drawing.Color.White;
+            this.btnContractorRemove.Image = global::UpastitiCS.Properties.Resources.cancel;
+            this.btnContractorRemove.Location = new System.Drawing.Point(216, 100);
+            this.btnContractorRemove.Name = "btnContractorRemove";
+            this.btnContractorRemove.Size = new System.Drawing.Size(105, 40);
+            this.btnContractorRemove.TabIndex = 3;
+            this.btnContractorRemove.Text = "Re&move";
+            this.btnContractorRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContractorRemove.UseVisualStyleBackColor = false;
+            // 
+            // cbContractor
+            // 
+            this.cbContractor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbContractor.FormattingEnabled = true;
+            this.cbContractor.Location = new System.Drawing.Point(129, 26);
+            this.cbContractor.Name = "cbContractor";
+            this.cbContractor.Size = new System.Drawing.Size(225, 24);
+            this.cbContractor.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(30, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.TabIndex = 28;
+            this.label2.Tag = "";
+            this.label2.Text = "Contractor: ";
+            this.label2.UseMnemonic = false;
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UpastitiCS.Properties.Resources.gray3;
-            this.ClientSize = new System.Drawing.Size(853, 550);
+            this.ClientSize = new System.Drawing.Size(853, 601);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbDefaultPlant);
             this.Controls.Add(this.gbResetPass);
             this.Controls.Add(this.gbDBParams);
@@ -523,6 +624,8 @@
             this.gbResetPass.PerformLayout();
             this.gbDefaultPlant.ResumeLayout(false);
             this.gbDefaultPlant.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -561,5 +664,12 @@
         private System.Windows.Forms.Button btnUpdatePlant;
         private System.Windows.Forms.ComboBox cbSelectPlant;
         private System.Windows.Forms.Label lblSelectPlant;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbContractorTitle;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnContractorAdd;
+        private System.Windows.Forms.Button btnContractorRemove;
+        private System.Windows.Forms.ComboBox cbContractor;
+        private System.Windows.Forms.Label label2;
     }
 }

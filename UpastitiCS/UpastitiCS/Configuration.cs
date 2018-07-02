@@ -88,6 +88,16 @@ namespace UpastitiCS
                         cbSamiti.Items.Add(reader.GetString(0));
                     }
                     reader.Close();
+
+
+                    cbContractor.Items.Clear();
+                    cmd.CommandText = string.Format("SELECT * FROM contractor order by contractorname;");
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cbContractor.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
                 }
             }
             catch (Exception ex)
@@ -337,7 +347,7 @@ namespace UpastitiCS
                         }
                         else
                         {
-                            MessageBox.Show(this, "This Samiti is already Exists", "Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, "This Samiti already Exists", "Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         reader.Close();
                     }
@@ -355,6 +365,55 @@ namespace UpastitiCS
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("Exception(btnSamitiAdd_Click):" + ex.Message);
+            }
+        }
+
+
+        private void btnContractorAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (cbContractor.Text != null && cbContractor.Text.Trim() != "")
+                {
+                    if (mssql != null && mssql.isConnected())
+                    {
+                        SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM contractor where contractorname='{0}';", cbContractor.Text.ToString().Trim().ToUpper()), mssql.getConnection());
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (!reader.Read())
+                        {
+                            reader.Close();
+                            if (mssql.executeNonQuery(string.Format("INSERT INTO contractor VALUES('{0}','{1}')", cbContractor.Text.ToString().Trim().ToUpper(), tbContractorTitle.Text.Trim().ToUpper())) == 1)
+                            {
+                                MessageBox.Show(this, "Successfully Added a new Contractor", "Added Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cbContractor.Text = "";
+                                LoadDBValues();
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Failed to Add a New Item", "Failed to Add", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "This Contractor already Exists", "Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        reader.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Unable to reach Database Server. Ensure Network Connectivity and Double-check Database Parameters under Settings.", "Unable to Connect Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "Empty Contractor Name...!!\nKindly Provide a non-empty contractor name to be added...", "Empty Contractor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("Exception(btnContractorAdd_Click):" + ex.Message);
             }
         }
 
@@ -394,6 +453,45 @@ namespace UpastitiCS
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("Exception(btnSamitiRemove_Click):" + ex.Message);
+            }
+        }
+
+        private void btnContractorRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbContractor.Text != null && cbContractor.Text.Trim() != "")
+                {
+                    if (MessageBox.Show(this, "You're about to remove a Contractor, Are you Sure to Continue?", "Are you Sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (mssql != null && mssql.isConnected())
+                        {
+                            if (mssql.executeNonQuery(string.Format("DELETE FROM contractor where contractorname='{0}'", cbContractor.Text.ToString().Trim().ToUpper())) == 1)
+                            {
+                                MessageBox.Show(this, "Contractor removed Successfully", "Removed Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cbContractor.Text = "";
+                                LoadDBValues();
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Contractor Not Found\nFailed to remove the Samiti", "Failed to Remove", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Unable to reach Database Server. Ensure Network Connectivity and Double-check Database Parameters under Settings.", "Unable to Connect Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "Empty Contractor Name...!!\nKindly Provide a non-empty contractor name to be removed...", "Empty Samiti", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("Exception(btnContractorRemove_Click):" + ex.Message);
             }
         }
 
@@ -457,6 +555,22 @@ namespace UpastitiCS
             }
         }
         /// <summary>
+        /// Update Contractor title to Database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbContractorTitle_Leave(object sender, EventArgs e)
+        {
+            //Confirm Contractor & its Title is Not Empty
+            if (cbContractor.SelectedIndex != -1 && tbContractorTitle.Text.Trim() != "")
+            {
+                if (mssql != null && mssql.isConnected())
+                {
+                    mssql.executeNonQuery(string.Format("UPDATE contractor SET title='{0}' where contractorname='{1}'", tbContractorTitle.Text.Trim().ToUpper(), cbContractor.Text.ToString().Trim().ToUpper()));
+                }
+            }
+        }
+        /// <summary>
         /// Show Plant Title
         /// </summary>
         /// <param name="sender"></param>
@@ -502,6 +616,32 @@ namespace UpastitiCS
                             tbSamitiTitle.Text = reader.GetString(0);
                         else
                             tbSamitiTitle.Text = "";
+                    }
+                    reader.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Show Contractor Title
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbContractor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbContractor.SelectedIndex != -1)
+            {
+                if (mssql != null && mssql.isConnected())
+                {
+                    string check = string.Format("SELECT title FROM contractor where contractorname='{0}';", cbContractor.Text.ToString().Trim().ToUpper());
+                    SqlCommand cmd = new SqlCommand(check, mssql.getConnection());
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(0))
+                            tbContractorTitle.Text = reader.GetString(0);
+                        else
+                            tbContractorTitle.Text = "";
                     }
                     reader.Close();
                 }
